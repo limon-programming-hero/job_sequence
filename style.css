@@ -1,0 +1,24 @@
+#job_number{
+    height: 40px;
+    width: 200px;
+    padding: 10px;
+    background-color: rgba(211, 211, 211, 0.555);
+}
+button{
+    font-weight: 500;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(5, 155, 45, 0.83);
+}
+#calculation_hidden, #input_T{
+    display: none;
+}
+td{
+    text-align: center;
+}
+td input{
+    height: 35px;
+    width: 100px;
+}

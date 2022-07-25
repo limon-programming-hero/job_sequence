@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job Sequence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="m-5">
+    <h1 class="text-center mt-4">Job Sequence</h1>
+    <div class="d-flex justify-content-center">
+        <div>
+            <input id="job_number" class="m-4" type="text" placeholder="Number of job">
+            <button id="create_btn">Create</button>
+        </div>
+    </div>
+    <div id="input_T" class="mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center" rowspan="2" scope="col">Job<sub>i</sub></th>
+                    <th class="text-center" colspan="3" scope="col">Processing Time</th>
+                </tr>
+                <tr>
+                    <th scope="col">Machine A<sub>i</sub></th>
+                    <th scope="col">Machine B<sub>i</sub></th>
+                    <th scope="col">Machine C<sub>i</sub></th>
+                </tr>
+            </thead>
+            <tbody id="input_TB">
+                <tr>
+                    <!-- <th scope="row">1</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td> -->
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center m-4">
+            <button id="calculation_btn">Calculation</button>
+        </div>
+    </div>
+    <div id="calculation_hidden">
+        <div id="sequence_T">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" rowspan="2" scope="col">Job</th>
+                        <th class="text-center" colspan="2" scope="col">Processing Time</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">G<sub>i</sub></th>
+                        <th scope="col">H<sub>i</sub></th>
+                    </tr>
+                </thead>
+                <tbody id="sequence_TB">
+                    <tr>
+                        <!-- <th scope="row">${i}</th>
+                        <td id="sequenceTD${i}1"></td>
+                        <td id="sequenceTD${i}2"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mx-4 my-4" id="job_order">
+            <table class="table table-bordered">
+                <tbody id="order_TB">
+                    <tr id="order_TR">
+                        <!-- <td id="orderTD${i}"></td>  -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="calculation.js"></script>
+</body>
+
+</html>
