@@ -60,8 +60,65 @@ function sequenceTableValue(jobNumber) {
 
 const orderTableMaking = (jobNumber, orderTR) => {
     for (let i = 1; i <= jobNumber; i++) {
-        const orderTD = document.createElement('td');
+        let orderTD = document.createElement('td');
         orderTD.id = `orderTD${i}`;
         orderTR.appendChild(orderTD);
     }
+    orderValue(jobNumber);
 };
+const orderValue = (jobNumber) => {
+    const sequence1 = [];
+    const sequence2 = [];
+    for (let i = 1; i <= jobNumber; i++) {
+        let text1 = document.getElementById(`sequenceTD1${i}`).innerText;
+        let text2 = document.getElementById(`sequenceTD2${i}`).innerText;
+        let value1 = parseFloat(text1);
+        let value2 = parseFloat(text2);
+        sequence1.push(value1);
+        sequence2.push(value2);
+    }
+
+    for (let j = 1; j <= jobNumber; j++) {
+        let min1 = Math.min(...sequence1);
+        let min2 = Math.min(...sequence2);
+        let max1 = Math.max(...sequence1);
+        let max2 = Math.max(...sequence2);
+
+        let min1Index = minIndex(sequence1, min1);
+        let min2Index = minIndex(sequence2, min2);
+
+        if (min1 <= min2) {
+            for (let i = 1; i <= jobNumber; i++) {
+                let orderTDValue = document.getElementById(`orderTD${i}`);
+                if (orderTDValue.innerText == "") {
+                    orderTDValue.innerText = min1Index + 1;
+                    sequence1.splice(min1Index, 1, max1 + 10);
+                    sequence2.splice(min1Index, 1, max2 + 10);
+                    break;
+                }
+            }
+        }
+        else {
+            for (let i = jobNumber; i >= 1; i--) {
+                let orderTDValue = document.getElementById(`orderTD${i}`);
+                if (orderTDValue.innerText == "") {
+                    orderTDValue.innerText = min2Index + 1;
+                    sequence1.splice(min2Index, 1, max1 + 10);
+                    sequence2.splice(min2Index, 1, max2 + 10);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+function minIndex(sequence, min) {
+    let indexi = 0;
+    for (let i = 1; i <= sequence.length; i++) {
+        if (min == sequence[i]) {
+            min = sequence[i];
+            indexi = i;
+        }
+    }
+    return indexi;
+}
