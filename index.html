@@ -11,7 +11,7 @@
 </head>
 
 <body class="m-5">
-    <h1 class="text-center mt-4">Job Sequence</h1>
+    <h1 class="text-center mt-4">Job Sequence for N job, 3 Machines</h1>
     <div class="d-flex justify-content-center">
         <div>
             <input id="job_number" class="m-4" type="text" placeholder="Number of job">
@@ -44,6 +44,14 @@
             <button id="calculation_btn">Calculation</button>
         </div>
     </div>
+    <div id="is_or_not">
+        <h5 class="text-center">For Jonthon's method:</h5>
+        <h5 class="text-center">1. min A<sub>i</sub> >= max B<sub>i</sub>
+            <p>or</p>
+        </h5>
+        <h5 class="text-center">2. min C<sub>i</sub> >= max B<sub>i</sub> should be maintained.</h5>
+        <h5 class="text-center" id="not">As Jonthon's condition is not maintained. This can't be solved by this method.</h5>
+    </div>
     <div id="calculation_hidden">
         <div id="sequence_T">
             <table class="table table-bordered">
@@ -67,7 +75,7 @@
             </table>
         </div>
         <div class="mx-4 my-4" id="job_order">
-            <h3>The job Sequence is:</h3>
+            <h3 class="text-center">The job Sequence is:</h3>
             <table class="table table-bordered">
                 <tbody id="order_TB">
                     <tr id="order_TR">
@@ -108,15 +116,13 @@
             </table>
         </div>
         <div id="show_output">
-            <h4>
-                Total elapsed time : <h5 id="elapsed_t"></h5>
+            <h4 class="text-center">Total elapsed time : <h5 class="text-center" id="elapsed_t"></h5>
             </h4>
-            <h4>Ideal time for Machine A: <h4 id="ideal_a"></h4>
+            <h4 class="text-center">Ideal time for Machine A: <h4 class="text-center" id="ideal_a"></h4>
             </h4>
-            <h4>Ideal time for Machine B:<h4 id="ideal_b"></h4>
-
+            <h4 class="text-center">Ideal time for Machine B:<h4 class="text-center" id="ideal_b"></h4>
             </h4>
-            <h4>Ideal time for Machine C:<h4 id="ideal_c"></h4>
+            <h4 class="text-center">Ideal time for Machine C:<h4 class="text-center" id="ideal_c"></h4>
 
             </h4>
 

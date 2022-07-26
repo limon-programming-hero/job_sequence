@@ -20,12 +20,31 @@ const inputJobTime = (jobNumber, inputTB) => {
         inputTB.appendChild(InputTR);
     }
     const calculationBtn = document.getElementById("calculation_btn").addEventListener('click', function () {
-        document.getElementById("calculation_hidden").style.display = "block";
+        let proTimeA = [];
+        let proTimeB = [];
+        let proTimeC = [];
 
-        const sequenceTB = document.getElementById("sequence_TB");
-        sequenceTB.innerHTML = "";
+        for (let i = 1; i <= jobNumber; i++) {
+            proTimeA.push(parseFloat(document.getElementById(`inputTDA${i}`).value));
+            proTimeB.push(parseFloat(document.getElementById(`inputTDB${i}`).value));
+            proTimeC.push(parseFloat(document.getElementById(`inputTDC${i}`).value));
+        }
+        const minA = Math.min(...proTimeA);
+        const maxB = Math.max(...proTimeB);
+        const minC = Math.min(...proTimeC);
+        if (minA >= maxB || minC >= maxB) {
+            document.getElementById("calculation_hidden").style.display = "block";
+            document.getElementById("is_or_not").style.display = "block";
 
-        sequenceTableMaking(sequenceTB);
+            const sequenceTB = document.getElementById("sequence_TB");
+            sequenceTB.innerHTML = "";
+
+            sequenceTableMaking(sequenceTB);
+        }
+        else {
+            document.getElementById("is_or_not").style.display = "block";
+            document.getElementById("not").style.display = "block";
+        }
     });
 }
 
@@ -201,19 +220,19 @@ const IdealTimeCalculation = (jobNumber) => {
     ElapsedT.innerText = elapsedTime;
     let timeA = 0;
     let timeB = 0;
-    let timeC = 0; 
+    let timeC = 0;
     for (let i = 1; i < jobNumber; i++) {
-        timeA = timeA + parseFloat(document.getElementById(`in_out_TDAI${i+1}`).innerText) - parseFloat(document.getElementById(`in_out_TDAO${i}`).innerText);
+        timeA = timeA + parseFloat(document.getElementById(`in_out_TDAI${i + 1}`).innerText) - parseFloat(document.getElementById(`in_out_TDAO${i}`).innerText);
 
-        timeB = timeB + parseFloat(document.getElementById(`in_out_TDBI${i+1}`).innerText) - parseFloat(document.getElementById(`in_out_TDBO${i}`).innerText);
+        timeB = timeB + parseFloat(document.getElementById(`in_out_TDBI${i + 1}`).innerText) - parseFloat(document.getElementById(`in_out_TDBO${i}`).innerText);
 
-        timeC = timeC + parseFloat(document.getElementById(`in_out_TDCI${i+1}`).innerText) - parseFloat(document.getElementById(`in_out_TDCO${i}`).innerText);
+        timeC = timeC + parseFloat(document.getElementById(`in_out_TDCI${i + 1}`).innerText) - parseFloat(document.getElementById(`in_out_TDCO${i}`).innerText);
     }
     timeA = timeA + elapsedTime - parseFloat(document.getElementById(`in_out_TDAO${jobNumber}`).innerText);
 
     timeB = timeB + elapsedTime - parseFloat(document.getElementById(`in_out_TDBO${jobNumber}`).innerText) + parseFloat(document.getElementById(`in_out_TDBI${1}`).innerText);
 
-    timeC = timeC + + parseFloat(document.getElementById(`in_out_TDCI${1}`).innerText);
+    timeC = timeC + parseFloat(document.getElementById(`in_out_TDCI${1}`).innerText);
 
     IdealA.innerText = timeA;
     IdealB.innerText = timeB;
